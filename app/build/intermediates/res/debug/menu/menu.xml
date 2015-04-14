@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".RubikActivity">
+    <item android:id="@+id/ai" android:title="@string/menu_ai" />
+    <item android:id="@+id/renew" android:title="@string/menu_renew" />
+    <item android:id="@+id/help" android:title="@string/menu_help" />
+</menu><!-- From: file:/D:/Rubik/app/src/main/res/menu/menu.xml -->

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, RubikActivity!</string>
+    <string name="app_name">Rubik</string>
+    <string name="menu_ai">AI</string>
+    <string name="menu_renew">新开局</string>
+    <string name="menu_help">帮助</string>
+</resources>

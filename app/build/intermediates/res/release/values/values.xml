@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/D:/Rubik/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name">Rubik</string>
+    <string name="hello">Hello World, RubikActivity!</string>
+    <string name="menu_ai">AI</string>
+    <string name="menu_help">帮助</string>
+    <string name="menu_renew">新开局</string>
+</resources>
