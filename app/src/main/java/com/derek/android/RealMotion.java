@@ -27,9 +27,10 @@ public class RealMotion extends MotionHandler {
 
     @Override
     public boolean onMotionStart(float x, float y) {
-        if(!getTouchSquare(x,y,curFace)){
+        if(!getTouchSquare(x,y,tmpFace)){
             return false;
         }
+        System.arraycopy(tmpFace,0,curFace,0,3);
         setHighLight();
         return true;
     }

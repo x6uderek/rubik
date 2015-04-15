@@ -1,6 +1,7 @@
 package com.derek.android;
 
 import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.derek.android.rubik.Action;
@@ -11,6 +12,7 @@ import com.derek.android.rubik.RotateAnimation;
 
 public abstract class MotionHandler implements Cube3.ViewportChangeListener {
     protected int currentRotateId = -1;
+    protected int currentTouchId = -1;
     protected RotateAnimation rotateAnimation;
     protected HighLightAnimation highLightAnimation;
     protected CubeRender render;
@@ -28,6 +30,9 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
     }
 
     public boolean onTouchEvent(MotionEvent event){
+        if(event.getPointerCount()>2){
+            return true;
+        }
         int action = MotionEventCompat.getActionMasked(event);
         int index = MotionEventCompat.getActionIndex(event);
         int id = event.getPointerId(index);
@@ -36,34 +41,40 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
         switch (action){
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
-                if(!onMotionStart(x,y)){
+                if(onMotionStart(x,y)){
+                    currentTouchId = id;
+                }
+                else {
                     currentRotateId = id;
                     preX = x;
                     preY = y;
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(id==currentRotateId){
-                    float dx = x - preX;
-                    float dy = y - preY;
-                    preX = x;
-                    preY = y;
+                if(currentRotateId!=-1){
+                    int pointIndex = event.findPointerIndex(currentRotateId);
+                    float dx = event.getX(pointIndex) - preX;
+                    float dy = event.getY(pointIndex) - preY;
+                    preX = event.getX(pointIndex);
+                    preY = event.getY(pointIndex);
                     render.rorate(-dy * scale,dx * scale);
                 }
                 else{
-                    onMotionMove(x,y);
+                    int pointIndex = event.findPointerIndex(currentTouchId);
+                    onMotionMove(event.getX(pointIndex),event.getY(pointIndex));
                 }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
             case MotionEvent.ACTION_UP:
-                if(id==currentRotateId) {
-                    currentRotateId = -1;
-                }
-                else{
+                if(currentTouchId==id){
                     Action rotateAction = onMotionEnd(x, y);
                     if(rotateAction!=null) {
                         rotateAnimation.addAction(rotateAction);
                     }
+                    currentTouchId = -1;
+                }
+                else if(currentRotateId==id){
+                    currentRotateId = -1;
                 }
                 break;
         }
