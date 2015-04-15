@@ -2,6 +2,9 @@ package com.derek.android.rubik;
 
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
+import android.os.Bundle;
+
+import com.derek.android.rubik.bean.UserPerspective;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -13,8 +16,8 @@ public class CubeRender implements Renderer {
     public static final float MAX_XANGLE = 80;
     public static final float viewDistance = 4;
 
-    private float xAngle = 0f;
-    private float yAngle = 0f;
+    private UserPerspective perspective;
+    public static final String PERSPECTIVE_SAVE_KEY = "CubeRender.perspective";
 
     public float[] rotation = new float[]{0,0,viewDistance};
 
@@ -26,7 +29,6 @@ public class CubeRender implements Renderer {
 
     public CubeRender(Animation animation) {
         this.animation = animation;
-        resetCam();
     }
 
     @Override
@@ -58,10 +60,17 @@ public class CubeRender implements Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         gl.glViewport(0, 0, width, height);
-        float ratio = (float)width / height;
         gl.glMatrixMode(GL10.GL_PROJECTION);
         gl.glLoadIdentity();
-        gl.glFrustumf(-ratio, ratio, -1, 1, 1, 5);
+        float ratio;
+        if(width < height){
+            ratio = (float) width/height;
+            gl.glFrustumf(-ratio, ratio, -1, 1, 1, 5);
+        }
+        else {
+            ratio = (float) height / width;
+            gl.glFrustumf(-1, 1, -ratio, ratio, 1, 5);
+        }
         gl.glDisable(GL10.GL_DITHER);
         gl.glActiveTexture(GL10.GL_TEXTURE0);
         Cube3.getInstance().setViewPort(new int[]{0,0,width,height});
@@ -78,31 +87,48 @@ public class CubeRender implements Renderer {
      * @param y Δy
      */
     public void rorate(float x, float y){
-        float target = xAngle + x;
+        float target = perspective.xAngle + x;
         if(target < MAX_XANGLE){
             if(target < MIN_XANGLE){
-                xAngle = MIN_XANGLE;
+                perspective.xAngle = MIN_XANGLE;
             }
             else {
-                xAngle += x;
+                perspective.xAngle += x;
             }
         }
         else{
-            xAngle = MAX_XANGLE;
+            perspective.xAngle = MAX_XANGLE;
         }
-        yAngle += y;
+        perspective.yAngle += y;
         applyRotation();
     }
 
     public void resetCam(){
-        xAngle = XANGLE;
-        yAngle = YANGLE;
+        perspective.xAngle = XANGLE;
+        perspective.yAngle = YANGLE;
         applyRotation();
     }
 
     private void applyRotation(){
-        Matrix3 rx = Matrix3.rotate(xAngle/180*Math.PI,0);
-        Matrix3 ry = Matrix3.rotate(yAngle/180*Math.PI,1);
+        Matrix3 rx = Matrix3.rotate(perspective.xAngle/180*Math.PI,0);
+        Matrix3 ry = Matrix3.rotate(perspective.yAngle/180*Math.PI,1);
         rx.multiply(ry).convert(rotation,eye);
     }
+
+    public void onSaveInstanceState(Bundle out){
+        out.putSerializable(PERSPECTIVE_SAVE_KEY,perspective);
+    }
+
+    public void onRestoreInstanceState(Bundle in){
+        if (in!=null) {
+            perspective = (UserPerspective)in.getSerializable(PERSPECTIVE_SAVE_KEY);
+            applyRotation();
+        }
+        else {
+            perspective = new UserPerspective();
+            resetCam();
+        }
+    }
+
+
 }

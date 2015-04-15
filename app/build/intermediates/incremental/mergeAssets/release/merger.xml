@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="22.0.0"><source path="D:\Rubik\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\assets"/></dataSet><dataSet config="main"><source path="D:\Rubik\app\src\main\assets"/></dataSet><dataSet config="release"><source path="D:\Rubik\app\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="22.0.0"><source path="E:\github\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\assets"/></dataSet><dataSet config="main"><source path="E:\github\app\src\main\assets"/></dataSet><dataSet config="release"><source path="E:\github\app\src\release\assets"/></dataSet></merger>

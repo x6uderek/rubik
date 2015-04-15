@@ -3,6 +3,7 @@ package com.derek.android;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -50,6 +51,7 @@ public class RubikActivity extends Activity {
         animation = new RotateAnimation();
         highLightAnimation = new HighLightAnimation();
         render = new CubeRender(new AnimationWrapper(new Animation[]{animation,highLightAnimation}));
+        render.onRestoreInstanceState(savedInstanceState);
         motionHandler = new RealMotion(animation,highLightAnimation,render);
         view.setRenderer(render);
         setContentView(view);
@@ -80,6 +82,12 @@ public class RubikActivity extends Activity {
     protected void onPause() {
         super.onPause();
         view.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle bundle){
+        super.onSaveInstanceState(bundle);
+        render.onSaveInstanceState(bundle);
     }
 
     @Override

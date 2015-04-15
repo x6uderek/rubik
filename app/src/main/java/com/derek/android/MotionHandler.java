@@ -15,8 +15,7 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
     protected HighLightAnimation highLightAnimation;
     protected CubeRender render;
 
-    private float scaleX = 180.0f / 320;
-    private float scaleY = 180.0f / 480;
+    private float scale = 180.0f / 320;
 
     private float preX;
     private float preY;
@@ -49,7 +48,7 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
                     float dy = y - preY;
                     preX = x;
                     preY = y;
-                    render.rorate(-dy * scaleY,dx * scaleX);
+                    render.rorate(-dy * scale,dx * scale);
                 }
                 else{
                     onMotionMove(x,y);
@@ -73,8 +72,7 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
 
     @Override
     public void onViewportChange(int[] viewport){
-        scaleX = 180.f / viewport[2];
-        scaleY = 180.f / viewport[3];
+        scale = 180.f / (viewport[2]<viewport[3]?viewport[2]:viewport[3]);
     }
 
     /**

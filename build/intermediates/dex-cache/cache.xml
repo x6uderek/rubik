@@ -16,11 +16,25 @@
         <dex dex="D:\Rubik\app\build\intermediates\pre-dexed\debug\classes-83d9fdb9fef0cc1f294d3a618c8759aba6dc6db1.jar" />
     </item>
     <item
+        jar="E:\github\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="E:\github\app\build\intermediates\pre-dexed\release\classes-48d7a524f96fd4e6a2437557ebbe351b1a4fce73.jar" />
+    </item>
+    <item
         jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
         <dex dex="D:\Rubik\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-22080f363661580b3def978d4499c8f6b02232ed.jar" />
+    </item>
+    <item
+        jar="E:\github\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="E:\github\app\build\intermediates\pre-dexed\release\internal_impl-22.0.0-39ca0e5559a6b0c7caf09c1110376843f3c9605e.jar" />
     </item>
 
 </items>
