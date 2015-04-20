@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import com.derek.android.rubik.RotateAnimation;
 import com.derek.android.rubik.RotateAnimation.AnimationListener;
 import com.derek.android.rubik.robot.DefaultAI;
 import com.derek.android.rubik.robot.IRobot;
+import com.testin.agent.TestinAgent;
 
 import java.util.Random;
 
@@ -41,6 +43,7 @@ public class RubikActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestinAgent.init(this);
         view = new GLSurfaceView(this.getApplication());
         view.setGLWrapper(new GLSurfaceView.GLWrapper() {
             @Override

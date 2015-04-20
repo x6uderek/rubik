@@ -13,38 +13,77 @@ ADDED from AndroidManifest.xml:2:1
 		INJECTED from AndroidManifest.xml:0:0
 	xmlns:android
 		ADDED from AndroidManifest.xml:2:11
-uses-sdk
+uses-permission#android.permission.INTERNET
 ADDED from AndroidManifest.xml:7:5
+	android:name
+		ADDED from AndroidManifest.xml:7:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:8:5
+	android:name
+		ADDED from AndroidManifest.xml:8:22
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from AndroidManifest.xml:9:5
+	android:name
+		ADDED from AndroidManifest.xml:9:22
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from AndroidManifest.xml:10:5
+	android:name
+		ADDED from AndroidManifest.xml:10:22
+uses-permission#android.permission.READ_LOGS
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.GET_TASKS
+ADDED from AndroidManifest.xml:12:5
+	android:maxSdkVersion
+		ADDED from AndroidManifest.xml:12:66
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+application
+ADDED from AndroidManifest.xml:14:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+	android:label
+		ADDED from AndroidManifest.xml:16:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:17:9
+	android:icon
+		ADDED from AndroidManifest.xml:15:9
+activity#com.derek.android.RubikActivity
+ADDED from AndroidManifest.xml:18:9
+	android:label
+		ADDED from AndroidManifest.xml:19:13
+	android:theme
+		ADDED from AndroidManifest.xml:21:13
+	android:name
+		ADDED from AndroidManifest.xml:20:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:22:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:23:17
+	android:name
+		ADDED from AndroidManifest.xml:23:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:24:17
+	android:name
+		ADDED from AndroidManifest.xml:24:27
+meta-data#TESTIN_APPKEY
+ADDED from AndroidManifest.xml:27:9
+	android:value
+		ADDED from AndroidManifest.xml:27:49
+	android:name
+		ADDED from AndroidManifest.xml:27:20
+meta-data#TESTIN_CHANNEL
+ADDED from AndroidManifest.xml:28:9
+	android:value
+		ADDED from AndroidManifest.xml:28:50
+	android:name
+		ADDED from AndroidManifest.xml:28:20
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:support-v4:22.0.0:20:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 	android:minSdkVersion
-		ADDED from AndroidManifest.xml:7:15
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-application
-ADDED from AndroidManifest.xml:9:5
-MERGED from com.android.support:support-v4:22.0.0:22:5
-	android:label
-		ADDED from AndroidManifest.xml:11:9
-	android:icon
-		ADDED from AndroidManifest.xml:10:9
-activity#com.derek.android.RubikActivity
-ADDED from AndroidManifest.xml:12:9
-	android:label
-		ADDED from AndroidManifest.xml:13:13
-	android:theme
-		ADDED from AndroidManifest.xml:15:13
-	android:name
-		ADDED from AndroidManifest.xml:14:13
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:16:13
-action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:17:17
-	android:name
-		ADDED from AndroidManifest.xml:17:25
-category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:18:17
-	android:name
-		ADDED from AndroidManifest.xml:18:27
