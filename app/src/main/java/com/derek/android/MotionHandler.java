@@ -61,7 +61,9 @@ public abstract class MotionHandler implements Cube3.ViewportChangeListener {
                 }
                 else{
                     int pointIndex = event.findPointerIndex(currentTouchId);
-                    onMotionMove(event.getX(pointIndex),event.getY(pointIndex));
+                    if(pointIndex!=-1) {
+                        onMotionMove(event.getX(pointIndex), event.getY(pointIndex));
+                    }
                 }
                 break;
             case MotionEvent.ACTION_POINTER_UP:
